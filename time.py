@@ -36,5 +36,35 @@ def reactest():
     sumtime = sum(answers)
     middletime = sumtime/len(answers)
     print(f'среднее время ответа:{middletime}')
-reactest()
-
+def tems():
+    pl1 = input('введите свой ник')
+    pl2 = input('введите свой ник')
+    tems = ['города','цвета','животные','страны']
+    while len(tems) > 1:
+        gamer = pl1 if len(tems) % 2 else pl2
+        value = input(f'{gamer}, в какую тему вы НЕ хотите играть?')
+        tems.remove(value)
+    print(f'мы играем в тему: {tems}')
+    rand = random.randint(1,2)
+    word = ''
+    word2 = ''
+    while True:
+        if rand == 1:
+            word = input(f'{pl1}, назовите слово на тему - {tems[0]}')
+            rand = 2
+        if word != '' and word2 != '':
+            if word[0] != word[-1]:
+                print(f'{pl2} проиграл')
+    else:
+        word2 = input(f'{pl2}, назовите слово на тему - {tems[0]}')
+        rand = 1
+        if word != '' and word2 != '':
+            if word[0] != word[-1]:
+                print(f'{pl2} проиграл')
+game = input('Это текстовый ассистент. Если хотите поиграть в слова на разные темы , введите слово <темы>.Если хотите порешать примеры напишите <примеры>. Если хотите узнать скорость вашей реакции напишите <реакция>')
+if game == 'темы':
+    tems()
+if game == 'примеры':
+    answs()
+if game == 'реакция':
+    reactest()
