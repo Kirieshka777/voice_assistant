@@ -1,8 +1,10 @@
-import random
+import keyboard
+from time import sleep
+from pynput import keyboard
 
-plnum = int(input('Игра угадай число. Введите число от 0 до 20'))
-mynum = random.randint(0,20)
-if mynum == plnum:
-    print(f'Вы выйграли! Загаданое число:{mynum}')
-else:
-    print(f'Вы проиграли! Загаданое число:{mynum}. Ваше число:{plnum}')
+with keyboard.Events() as events:
+    for event in events:
+        if event.key == keyboard.Key.esc:
+            break
+        else:
+            print(event)
