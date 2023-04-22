@@ -1,16 +1,16 @@
 from datetime import datetime
 import time
 import random
-import keyboard
-from time import sleep
-from pynput import keyboard
+#import keyboard
+#from time import sleep
+#from pynput import keyboard
 
-with keyboard.Events() as events:
-    for event in events:
-        if event.key == keyboard.Key.esc:
-            break
-        else:
-            print(event)
+#with keyboard.Events() as events:
+    #for event in events:
+        #if event.key == keyboard.Key.esc:
+           # break
+        #else:
+           # print(event)
 def answs(answ):
     timeansw = []
     count = 0
@@ -71,10 +71,30 @@ def tems():
         if word != '' and word2 != '':
             if word[0] != word[-1]:
                 print(f'{pl2} проиграл')
-game = input('Это текстовый ассистент. Если хотите поиграть в слова на разные темы , введите слово <темы>.Если хотите порешать примеры напишите <примеры>. Если хотите узнать скорость вашей реакции напишите <реакция>')
-if game == 'темы':
-    tems()
-if game == 'примеры':
-    answs()
-if game == 'реакция':
-    reactest()
+def diary():
+    password = input('Введите пароль')
+    passwordd = '1234'
+    #with open('password', 'r') as password:      
+    if password == passwordd:
+        with open('diary', 'a+') as diary:
+            command = input('Если вы хотите записать , то напишите <записать>.Если вы хотите читать напишите <читать>.')
+            if command == 'записать':
+                text = input('Введите запись')
+                diary.write(text)
+                p = input('Вы хотите читать файл?')
+                print(p)
+                if p == 'да':
+                    j = diary.read(10)
+                    print(j)
+                else:
+                    print('Спасибо за работу')
+    if password != passwordd:
+        print('пошёл из моего дома')
+diary()
+#game = input('Это текстовый ассистент. Если хотите поиграть в слова на разные темы , введите слово <темы>.Если хотите порешать примеры напишите <примеры>. Если хотите узнать скорость вашей реакции напишите <реакция>')
+#if game == 'темы':
+    #tems()
+#if game == 'примеры':
+    #answs()
+#if game == 'реакция':
+    #reactest()
