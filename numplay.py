@@ -1,10 +1,4 @@
-import keyboard
-from time import sleep
-from pynput import keyboard
 
-with keyboard.Events() as events:
-    for event in events:
-        if event.key == keyboard.Key.esc:
-            break
-        else:
-            print(event)
+from datetime import datetime
+a = datetime.now()
+print(a.hour, ':', a.minute)
