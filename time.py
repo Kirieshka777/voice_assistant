@@ -1,7 +1,6 @@
 from datetime import datetime
 import time
 import random
-raz = 0
 #import keyboard
 #from time import sleep
 #from pynput import keyboard
@@ -13,6 +12,7 @@ raz = 0
         #else:
            # print(event)
 def answs(answ):
+    """эта игра выводит примеры"""
     timeansw = []
     count = 0
     while count <= 5:
@@ -31,8 +31,8 @@ def answs(answ):
     y = sum(timeansw)
     d = len(timeansw)
     print(y/d)
-    raz = raz + 1
 def reactest():
+    """Эта игра проводит тест на реакцию"""
     answers = []
     print('Вам выведется число. Вы должны как можно быстрей нажать его ')
     s = 0
@@ -48,8 +48,8 @@ def reactest():
     sumtime = sum(answers)
     middletime = sumtime/len(answers)
     print(f'среднее время ответа:{middletime}')
-    raz = raz + 1
 def tems():
+    """Игра в слова на разные темы"""
     pl1 = input('введите свой ник')
     pl2 = input('введите свой ник')
     tems = ['города','цвета','животные','страны']
@@ -74,28 +74,26 @@ def tems():
         if word != '' and word2 != '':
             if word[0] != word[-1]:
                 print(f'{pl2} проиграл')
-    raz = raz + 1
 def diary():
+    """Это личный дневник"""
     password = input('Введите пароль')
     passwordd = '1234'
     #with open('password', 'r') as password:      
     if password == passwordd:
         with open('diary', 'a+') as diary:
-            command = input('Если вы хотите записать , то напишите <записать>.Если вы хотите читать напишите <читать>.')
-            if command == 'записать':
-                text = input('Введите запись')
-                diary.write(text)
-                p = input('Вы хотите читать файл?')
-                print(p)
-                if p == 'да':
-                    j = diary.read(10)
-                    print(j)
-                else:
-                    print('Спасибо за работу')
+            command = input('Введите запись:')
+            diary.write(command)
+            p = input('Вы хотите читать файл?')
+            print(p)
+            if p == 'да':
+                j = diary.read(10)
+                print(j)
+            else:
+                print('Спасибо за работу')
     if password != passwordd:
         print('пошёл из моего дома')
-    raz = raz + 1
 def timeworld():
+    """Это время в разных городах"""
     hworld = datetime.now()
     city = input('Выберете город для определения времени:Вашингтон, Москва, Пекин, Лон дон, Берлин.')
     if city == 'Вашингтон':
@@ -113,10 +111,11 @@ def timeworld():
     if city == 'Берлин':
         hw = hworld.hour - 1
         print(hw, ':', hworld.minute)
-    raz = raz + 1
+    
      
 
-game = input('Это текстовый ассистент. Если хотите поиграть в слова на разные темы , введите слово <темы>.Если хотите порешать примеры напишите <примеры>. Если хотите узнать скорость вашей реакции напишите <реакция>.Если хотите узнать время в разных городах напишите <время в городах>')
+game = input('Это текстовый ассистент. Если хотите поиграть в слова на разные темы , введите слово <темы>.Если хотите порешать примеры напишите <примеры>. Если хотите узнать скорость вашей реакции напишите <реакция>.Если хотите узнать время в разных городах напишите <время в городах>.Если хотите использовать дневник, напишите <дневник>')
+"""Это интерфейс помошника"""
 if game == 'темы':
     tems()
 if game == 'примеры':
@@ -125,7 +124,5 @@ if game == 'реакция':
     reactest()
 if game == 'время в городах':
     timeworld()
-if raz <= 5 :
-    print('Что хотите использовать?')
-else:
-    print('Пока')
+if game == 'дневник':
+    diary()
