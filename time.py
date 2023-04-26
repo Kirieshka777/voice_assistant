@@ -126,3 +126,18 @@ if game == 'время в городах':
     timeworld()
 if game == 'дневник':
     diary()
+funcreap = input('Вы хотите продолжить?')
+if funcreap == 'да':
+    functions = input('Какую функцию вы хотите использовать?')
+    if functions == 'темы':
+        tems()
+    if functions == 'примеры':
+        answs()
+    if functions == 'реакция':
+        reactest()
+    if functions == 'время в городах':
+        timeworld()
+    if functions == 'дневник':
+        diary()
+else:
+    print('Пока')
