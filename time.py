@@ -24,10 +24,11 @@ def answs(answ):
         answ = int(input('Введите ответ'))
         if answ != (n1 + n2):
             print('Неправильно9')
-        count = count + 1
-        fint = datetime.now()
-        c = fint.second-startt.second
-        timeansw.append(c)
+        else:
+            count = count + 1
+            fint = datetime.now()
+            c = fint.second-startt.second
+            timeansw.append(c)   
     print(timeansw)
     y = sum(timeansw)
     d = len(timeansw)
