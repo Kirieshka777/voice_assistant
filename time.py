@@ -1,6 +1,7 @@
 from datetime import datetime
 import time
 import random
+import datetime as dt
 #import keyboard
 #from time import sleep
 #from pynput import keyboard
@@ -74,45 +75,46 @@ def tems():
         if word != '' and word2 != '':
             if word[0] != word[-1]:
                 print(f'{pl2} проиграл')
+def passwordch():
+    password = input('Введите пароль')
+    if password == '1234':
+        return True
+    return False
+
 def diary():
     """Это личный дневник"""
-    password = input('Введите пароль')
-    passwordd = '1234'
-    #with open('password', 'r') as password:      
-    if password == passwordd:
-        with open('diary', 'a+') as diary:
-            command = input('Введите запись:')
-            diary.write(command)
-            p = input('Вы хотите читать файл?')
-            print(p)
-            if p == 'да':
-                j = diary.read(10)
-                print(j)
-            else:
-                print('Спасибо за работу')
-    if password != passwordd:
-        print('пошёл из моего дома')
+    if not passwordch():
+        return 0
+    if passwordch():
+        command = input('Вы хотите записать или читать?')
+        if command == 'читать':
+            f = open('diary.txt', 'r')
+            diary.read()
+            f.close()
+        elif command == 'записать':
+            f = open('diary.txt','a')
+            text = input('Введите запись:')
+            diary.write(text)
+            f.close
+        else:
+            print('Я не понял')
 def timeworld():
     """Это время в разных городах"""
-    hworld = datetime.now()
-    city = input('Выберете город для определения времени:Вашингтон, Москва, Пекин, Лон дон, Берлин.')
-    if city == 'Вашингтон':
-        hw = hworld.hour - 7
-        print(hw, ':', hworld.minute) 
-    if city == 'Москва':
-        hw = hworld.hour
-        print(hw, ':', hworld.minute) 
-    if city == 'Пекин':
-        hw = hworld.hour + 5
-        print(hw, ':', hworld.minute)
-    if city == 'Лон дон':
-        hw = hworld.hour - 2
-        print(hw, ':', hworld.minute)
-    if city == 'Берлин':
-        hw = hworld.hour - 1
-        print(hw, ':', hworld.minute)
-    
-     
+    UTC = {
+    'Ростов на дону': 3,
+    'Москва':3,
+    'Петропавловск Камчатский':12,
+    'Лондон':0,
+    'Вашингтон':-5
+    }
+    city = input('Введите город: Ростов на дону, Москва, Петропавловск Камчатский, Лондон, Вашингтон')
+    utc_time = dt.datetime.utcnow()
+    try:
+        time = dt.timedelta(hours=UTC[city])
+        city_time = utc_time + time
+        print(city_time)
+    except KeyError:
+        print('Я не знаю')
 
 game = input('Это текстовый ассистент. Если хотите поиграть в слова на разные темы , введите слово <темы>.Если хотите порешать примеры напишите <примеры>. Если хотите узнать скорость вашей реакции напишите <реакция>.Если хотите узнать время в разных городах напишите <время в городах>.Если хотите использовать дневник, напишите <дневник>')
 """Это интерфейс помошника"""
