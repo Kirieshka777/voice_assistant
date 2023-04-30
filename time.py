@@ -12,7 +12,7 @@ import datetime as dt
            # break
         #else:
            # print(event)
-def answs(answ):
+def answs():
     """эта игра выводит примеры"""
     timeansw = []
     count = 0
@@ -23,7 +23,8 @@ def answs(answ):
         print(n1, '+', n2)
         answ = int(input('Введите ответ'))
         if answ != (n1 + n2):
-            print('Неправильно9')
+            print('Неправильно')
+            count = count + 1
         else:
             count = count + 1
             fint = datetime.now()
@@ -43,10 +44,14 @@ def reactest():
         numrand = random.randint(0,10)
         print(numrand)
         num = int(input('введите данное число'))
-        s = s+1
-        fnt = datetime.now()
-        answtime = fnt.second - stt.second
-        answers.append(answtime)
+        if num != numrand:
+            print('Неправильно')
+            s = s+1
+        else:
+            s = s + 1
+            fnt = datetime.now()
+            answtime = fnt.second - stt.second
+            answers.append(answtime)
     sumtime = sum(answers)
     middletime = sumtime/len(answers)
     print(f'среднее время ответа:{middletime}')
@@ -70,12 +75,12 @@ def tems():
         if word != '' and word2 != '':
             if word[0] != word[-1]:
                 print(f'{pl2} проиграл')
-    else:
-        word2 = input(f'{pl2}, назовите слово на тему - {tems[0]}')
-        rand = 1
-        if word != '' and word2 != '':
-            if word[0] != word[-1]:
-                print(f'{pl2} проиграл')
+        else:
+            word2 = input(f'{pl2}, назовите слово на тему - {tems[0]}')
+            rand = 1
+            if word != '' and word2 != '':
+                if word[0] != word[-1]:
+                    print(f'{pl2} проиграл')
 def passwordch():
     password = input('Введите пароль')
     if password == '1234':
@@ -87,16 +92,13 @@ def diary():
     if not passwordch():
         return 0
     if passwordch():
+        diary = open('diary.txt', 'a+')
         command = input('Вы хотите записать или читать?')
         if command == 'читать':
-            f = open('diary.txt', 'r')
             diary.read()
-            f.close()
         elif command == 'записать':
-            f = open('diary.txt','a')
             text = input('Введите запись:')
             diary.write(text)
-            f.close
         else:
             print('Я не понял')
 def timeworld():
@@ -134,8 +136,7 @@ def numplay():
         else:
             print('Вы выйграли!')
             break
-assistantname = input('Какое имя для помошника, вы хотите использовать?')
-game = input(f'Это текстовый ассистент {assistantname}. Если хотите поиграть в слова на разные темы , введите слово <темы>.Если хотите порешать примеры напишите <примеры>. Если хотите узнать скорость вашей реакции напишите <реакция>.Если хотите узнать время в разных городах напишите <время в городах>.Если хотите использовать дневник, напишите <дневник>.Если хотите угадать число пишите<угадать число>')
+game = input('Это текстовый ассистент. Если хотите поиграть в слова на разные темы , введите слово <темы>.Если хотите порешать примеры напишите <примеры>. Если хотите узнать скорость вашей реакции напишите <реакция>.Если хотите узнать время в разных городах напишите <время в городах>.Если хотите использовать дневник, напишите <дневник>.Если хотите угадать число пишите<угадай число>')
 """Это интерфейс помошника"""
 if game == 'темы':
     tems()
