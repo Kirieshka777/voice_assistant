@@ -2,7 +2,7 @@ from datetime import datetime
 import time
 import random
 import datetime as dt
-#import keyboard
+import keyboard
 #from time import sleep
 #from pynput import keyboard
 
